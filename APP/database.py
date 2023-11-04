@@ -36,6 +36,7 @@ def register_user():
 
         connection.commit()
     except pyodbc.Error as ex:
+        app.logger.error(ex)  # Log the specific error for debugging
         return jsonify({'error': 'Error registering user'}), 500  # 500 Internal Server Error
     finally:
         if connection:
@@ -56,6 +57,7 @@ def get_job_listings():
         job_listings = [{'JobID': row.JobID, 'Title': row.Title, 'Description': row.Description, 'Location': row.Location,
                         'Company': row.Company, 'Salary': row.Salary} for row in cursor.fetchall()]
     except pyodbc.Error as ex:
+        app.logger.error(ex)  # Log the specific error for debugging
         return jsonify({'error': 'Error retrieving job listings'}), 500  # 500 Internal Server Error
     finally:
         if connection:
