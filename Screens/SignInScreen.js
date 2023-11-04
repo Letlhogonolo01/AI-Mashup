@@ -20,9 +20,15 @@ const SignInScreen = ({ navigation }) => {
     navigation.navigate('SignUp');
   };
 
+  const navigateToWelcome = () => {
+    navigation.navigate('WelcomeScreen');
+  };
+
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/logo.png')} style={styles.logo} />
+      <TouchableOpacity onPress={navigateToWelcome}>
+        <Image source={require('../assets/logo.png')} style={styles.logo} />
+      </TouchableOpacity>
       <Text style={styles.signInText}>Sign In</Text>
 
       <TextInput
@@ -57,11 +63,11 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 200,
-    marginBottom: 40,
-    borderRadius: 100, 
+    marginBottom: 80,
+    borderRadius: 100,
   },
   signInText: {
-    fontSize: 30,
+    fontSize: 40,
     fontWeight: 'bold',
     marginBottom: 30,
   },
@@ -75,7 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   signUpLink: {
-    color: 'grey',
+    color: 'blue',
     marginTop: 10,
   },
 });
