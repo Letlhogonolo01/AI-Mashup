@@ -4,7 +4,7 @@ import { View, Text, Image, Switch } from 'react-native';
 const Header = () => (
   <View style={{ alignItems: 'center', padding: 16 }}>
     <Image
-      source={require('../assets/profile.jpeg')} // Add your image path
+      source={require('../assets/profile.jpeg')} 
       style={{ width: 100, height: 100, borderRadius: 50 }}
     />
     <Text style={{ fontSize: 18, fontWeight: 'bold' }}>John Doe</Text>
