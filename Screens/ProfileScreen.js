@@ -1,10 +1,13 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Card, Input, Avatar } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
 
   const goBack = () => {
     navigation.goBack();
@@ -15,7 +18,31 @@ const ProfileScreen = () => {
       <TouchableOpacity onPress={goBack} style={styles.backButton}>
         <Ionicons name="arrow-back-outline" size={24} color="#000" />
       </TouchableOpacity>
-      <Text style={styles.screenTitle}>ProfileScreen</Text>
+
+      <Card containerStyle={styles.card}>
+        <Avatar
+          size="xlarge"
+          rounded
+          icon={{ name: 'user', type: 'font-awesome' }}
+          activeOpacity={0.7}
+          containerStyle={styles.avatar}
+        />
+        <Input
+          placeholder="Full Name"
+          value={fullName}
+          onChangeText={(text) => setFullName(text)}
+          containerStyle={styles.input}
+        />
+        <Input
+          placeholder="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          keyboardType="email-address"
+          containerStyle={styles.input}
+        />
+        <Text style={styles.label}>User Type: Regular User</Text>
+        <Text style={styles.label}>Connectivity Status (AI-Driven): Excellent</Text>
+      </Card>
     </SafeAreaView>
   );
 };
@@ -23,8 +50,8 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff', // Set your background color
-    paddingTop: 10
+    backgroundColor: '#fff',
+    justifyContent: 'center',
   },
   backButton: {
     padding: 20,
@@ -33,10 +60,21 @@ const styles = StyleSheet.create({
     left: 10,
     zIndex: 1,
   },
-  screenTitle: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginTop: 50, // Adjust the margin as needed
+  card: {
+    alignItems: 'center',
+    padding: 20,
+    margin: 20,
+    elevation: 5,
+  },
+  avatar: {
+    marginBottom: 20,
+  },
+  input: {
+    marginBottom: 15,
+  },
+  label: {
+    fontSize: 16,
+    marginTop: 10,
   },
 });
 

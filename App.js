@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+// import { useFonts, FontAwesome } from '@expo-google-fonts/inter';
 import SignInScreen from './Screens/SignInScreen';
 import SignUpScreen from './Screens/SignUpScreen';
 import HomeScreen from './Screens/HomeScreen';
@@ -12,6 +13,15 @@ import DashBoard from './Screens/DashBoard';
 const Stack = createStackNavigator();
 
 const App = () => {
+  // const [fontsLoaded] = useFonts({
+  //   FontAwesome,
+  //   // Add other fonts if needed
+  // });
+
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="WelcomeScreen">

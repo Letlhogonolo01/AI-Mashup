@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { Header, Card } from 'react-native-elements';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Ionicons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
 
 const Drawer = createDrawerNavigator();
 
-const HomeScreenContent = ({ navigation }) => {
+const HomeScreenContent = () => {
   const menuItems = [
     'Mobile Data Optimization (Toggle)',
     'Local Network Management',
@@ -36,11 +36,10 @@ const HomeScreenContent = ({ navigation }) => {
 
 const HomeScreen = ({ navigation }) => {
   const openDrawer = () => {
-    navigation.openDrawer();
+      
   };
 
   const navigateToProfile = () => {
-    // Handle navigation to the profile screen
     navigation.navigate('ProfileScreen');
   };
 
@@ -85,7 +84,7 @@ const HomeScreen = ({ navigation }) => {
       content: ['Data Privacy Settings', 'Account Management'],
     },
   ];
-  
+
   const renderItem = ({ item }) => (
     <Card title={item.title}>
       {item.content.map((text, index) => (
@@ -102,7 +101,7 @@ const HomeScreen = ({ navigation }) => {
             <Ionicons name="menu-outline" size={24} color="#fff" />
           </TouchableOpacity>
         }
-        centerComponent={{ text: 'User Profile', style: { color: '#fff' } }}
+        centerComponent={{ text: 'Dashboard', style: { color: '#fff' } }}
         rightComponent={
           <TouchableOpacity onPress={navigateToProfile}>
             <Ionicons name="person-outline" size={24} color="#fff" />
@@ -114,16 +113,16 @@ const HomeScreen = ({ navigation }) => {
         }}
       />
       <Drawer.Navigator initialRouteName="MainHomeScreen">
-  <Drawer.Screen
-    name="MainHomeScreen"
-    component={() => <HomeScreenContent navigation={navigation} />}
-  />
-</Drawer.Navigator>
-<FlatList
-      data={data}
-      renderItem={renderItem}
-      keyExtractor={(item, index) => index.toString()}
-    />
+        <Drawer.Screen
+          name="MainHomeScreen"
+          component={HomeScreenContent}
+        />
+      </Drawer.Navigator>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+      />
     </View>
   );
 };
