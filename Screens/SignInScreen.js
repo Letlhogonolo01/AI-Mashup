@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Image, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TextInput, Button, Image, StyleSheet, TouchableOpacity, Alert, SafeAreaView } from 'react-native';
 
 const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -25,7 +25,7 @@ const SignInScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity onPress={navigateToWelcome}>
         <Image source={require('../assets/logo.png')} style={styles.logo} />
       </TouchableOpacity>
@@ -50,7 +50,7 @@ const SignInScreen = ({ navigation }) => {
       <TouchableOpacity onPress={navigateToSignUp}>
         <Text style={styles.signUpLink}>Don't have an account? Sign Up</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 200,
-    marginBottom: 80,
+    marginBottom: 40,
     borderRadius: 100,
   },
   signInText: {
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   signUpLink: {
-    color: 'blue',
+    color: 'grey',
     marginTop: 10,
   },
 });

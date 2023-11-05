@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import pyodbc
 import bleach  # for input validation
-
+python
 app = Flask(__name__)
 
 # Define your Azure SQL Database credentials
