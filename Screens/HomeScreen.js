@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { Header } from 'react-native-elements';
+import { Header, Card } from 'react-native-elements';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Ionicons } from '@expo/vector-icons'; // Assuming you have Expo installed
+import { Ionicons } from '@expo/vector-icons'; 
 
 const Drawer = createDrawerNavigator();
 
@@ -44,6 +44,56 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate('ProfileScreen');
   };
 
+  const data = [
+    {
+      title: 'Mobile Data Optimization (Toggle)',
+      content: [
+        'Data Saved: [Amount]',
+        'Data Usage Analysis (Chart)',
+        'Tips for Efficient Data Usage',
+      ],
+    },
+    {
+      title: 'List of Connected Networks',
+      content: [
+        'Network Health: Excellent (AI-Driven)',
+        'Devices Connected (Manage Devices)',
+        'Optimize Network Settings',
+      ],
+    },
+    {
+      title: 'Emergency Service Numbers',
+      content: [
+        'Quick Access to Local Emergency Services',
+        'SOS Feature for Emergency Alert',
+      ],
+    },
+    {
+      title: 'List of Online Courses and Resources',
+      content: ['AI-Personalized Recommendations', 'View Course (Link)'],
+    },
+    {
+      title: 'AI Signal Booster (Toggle)',
+      content: ['Signal Strength Improvement Metrics (AI-Driven)'],
+    },
+    {
+      title: 'List of Frequently Accessed Websites',
+      content: ['AI-Driven Content Preloading'],
+    },
+    {
+      title: 'User Settings and Preferences',
+      content: ['Data Privacy Settings', 'Account Management'],
+    },
+  ];
+  
+  const renderItem = ({ item }) => (
+    <Card title={item.title}>
+      {item.content.map((text, index) => (
+        <Text key={index}>{text}</Text>
+      ))}
+    </Card>
+  );
+
   return (
     <View>
       <Header
@@ -63,16 +113,17 @@ const HomeScreen = ({ navigation }) => {
           justifyContent: 'space-around',
         }}
       />
-      <View>
-        <Text>Welcome to the Home Screen</Text>
-        {/* Add more UI components and logic here */}
-      </View>
       <Drawer.Navigator initialRouteName="MainHomeScreen">
   <Drawer.Screen
     name="MainHomeScreen"
     component={() => <HomeScreenContent navigation={navigation} />}
   />
 </Drawer.Navigator>
+<FlatList
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={(item, index) => index.toString()}
+    />
     </View>
   );
 };
